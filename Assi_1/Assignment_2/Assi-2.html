@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>Sort Cars</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.ajax({
+                    url: "sort.php",
+                    success: function (result) {
+                        $("#sorted").html(result);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sorted List </h1>
+        <button>Sort Animals</button>
+        <ul class="sorted-list" id="sorted"></ul>
+    </div>
+</body>
+
+</html>
