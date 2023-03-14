@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Update Paragraph with Text Area</title>
+	<style>
+		#output {
+			margin-top: 20px;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#myform').submit(function (event) {
+				event.preventDefault();
+				var newText = $('#text').val();
+				console.log(newText);
+				$.ajax({
+					type: 'POST',
+					url: 'update.php',
+					data: { text: newText },
+					success: function (response) {
+						$('#output').text(response);
+					},
+					error: function (xhr, status, error) {
+						alert("failed" + xhr + status + error);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<form id="myform">
+		<label for="text">Enter Text:</label>
+		<textarea id="text" name="text" required></textarea>
+		<button type="submit">Submit</button>
+	</form>
+
+	<p id="output">This is the initial paragraph text.</p>
+</body>
+
+</html>
