@@ -13,10 +13,9 @@
     <div class="main">
         <h1 style="text-align: center;">Enter Table Data</h1>
         <div class="container">
-            <form id="myform" action="insert.php" method="POST">
+            <form id="myform"  method="POST">
 
-                <label for="Id">Id</label>
-                <input type="INT" id="Id" name="Id" placeholder="Id.." required>
+
 
                 <label for="fname">First Name</label>
                 <input type="text" id="fname" name="fname" placeholder="fname.." required>
@@ -62,20 +61,10 @@
                     url: 'insert.php',
                     data: $('#myform').serialize(),
                     success: function (response) {
-                        $('#mytable tbody').append('<tr><td>' + $('#Id').val() 
-                            + '</td><td>' + $('#fname').val() + '</td><td>' + $('#lname').val() + '</td><td>'
-                                 + $('#Office').val() + '</td><td>' + $('#Post').val() + '</td></tr>');
-                        $('#Id').val('');
-                        $('#fname').val('');
-                        $('#lname').val('');
-                        $('#Office').val('');
-                        $('#Post').val('');
+                        $('#mytable tbody').append(response)
                     },
 
-                    // success: function (response) {
-                    //     // $('#mytable tbody').append(response);
-
-                    // },
+                    
                     error: function (xhr, status, error) {
                         alert("failed" + xhr + status + error);
                     }
