@@ -1,23 +1,37 @@
+{/* <script > */}
 $(document).ready(function () {
-    $('#myform').submit(function (event) {
-        event.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: 'insert.php',
-            data: $('#myform').serialize(),
-            success: function (response) {
-                $('#mytable tbody').append(response)
-                $('#Title').val('');
-                $('#Rating').val('');
+  $("form").submit(function (event) {
+    $('tbody').empty();
+    var formData = {
+      title: $("#title").val(),
+      rating: $("#rating").val(),
+    };
 
-            },
-
-
-
-            error: function (xhr, status, error) {
-                alert("failed" + xhr + status + error);
-            }
-        });
+    $.ajax({
+      type: "POST",
+      url: "insert.php",
+      data: formData,
+      dataType: "json",
+      encode: true,
+      success: function (response) {
+          var len = response.length;
+          for(var i=0; i<len; i++){
+              var id = response[i].id;
+              var title = response[i].Title;
+              var rating = response[i].rating;
+              var tr_str = "<tr>" +
+                  "<td>" + id + "</td>" +
+                  "<td>" + title + "</td>" +
+                  "<td>" + rating + "</td>" +
+                  "</tr>";
+              $("#mytable tbody").append(tr_str);
+              $('#title').val('');
+              $('#rating').val('');
+          }
+      }
     });
-});
 
+    event.preventDefault();
+  });
+});
+{/* </script> */}
