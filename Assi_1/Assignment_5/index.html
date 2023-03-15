@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
     <title>Insert Data</title>
 </head>
 
@@ -14,17 +16,17 @@
         <h1 style="text-align: center;">My Favorite Movie</h1>
         <div class="container">
             <div class="form">
-            <form id="myform" method="POST">
+                <form id="myform" method="POST">
 
-                <label for="Title">Title</label>
-                <input id="title"  type="text" id="Title" name="Title" placeholder="Title.." required>
+                    <label for="Title">Title</label>
+                    <input id="title" type="text" id="Title" name="Title" placeholder="Title.." required>
 
-                <label for="Rating">Rating</label>
-                <input type="int" id="rating" id="Rating" name="Rating" placeholder="Rating.." required>
+                    <label for="Rating">Rating (Out of 10)</label>
+                    <input type="number" id="rating" id="Rating" name="Rating" placeholder="Rating.." required>
 
-                <input type="submit" name="submit" value="Submit">
-            </form>
-        </div>
+                    <input type="submit" name="submit" value="Submit">
+                </form>
+            </div>
 
             <div>
                 <h1> View Data</h1>
@@ -34,7 +36,7 @@
                             <th>Id</th>
                             <th>Title</th>
                             <th>Rating</th>
-                            <!-- <th>Delete</th> -->
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,43 +48,6 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
-    <!-- <script >
-      $(document).ready(function () {
-        $("form").submit(function (event) {
-          var formData = {
-            title: $("#title").val(),
-            rating: $("#rating").val(),
-          };
-      
-          $.ajax({
-            type: "POST",
-            url: "insert.php",
-            data: formData,
-            dataType: "json",
-            encode: true,
-            success: function (response) {
-                var len = response.length;
-                for(var i=0; i<len; i++){
-                    var id = response[i].id;
-                    var title = response[i].Title;
-                    var rating = response[i].rating;
-                    var tr_str = "<tr>" +
-                        "<td>" + id + "</td>" +
-                        "<td>" + title + "</td>" +
-                        "<td>" + rating + "</td>" +
-                        "</tr>";
-                    $("#mytable tbody").append(tr_str);
-                    $('#title').val('');
-                    $('#rating').val('');
-                }
-            }
-          });
-      
-          event.preventDefault();
-        });
-      });
-    </script> -->
-
 </body>
 
 </html>

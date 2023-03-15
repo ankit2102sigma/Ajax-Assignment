@@ -45,9 +45,7 @@ if ($result->num_rows > 0) {
         echo "<tr><td>" . $row["id"] . "</td><td>" . $row["First_Name"] . "</td><td>"
             . $row["Last_Name"] . "</td><td>" . $row["Office_name"]
             . "</td><td>" . $row["Post"] . "</td></tr>";
-            
     }
-   
 } else {
     echo "0 results";
 }
