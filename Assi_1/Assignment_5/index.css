@@ -69,6 +69,7 @@ label {
     max-width: 500px;
     word-break: break-all;
 
+
   }
 
   th {
@@ -105,3 +106,27 @@ label {
     max-width: 40px;
     word-break: break-all;
   }
+  .up{
+    padding: 0px  !important;
+    border-radius: 0px !important;
+    color: black !important;
+    background: none !important;
+    margin: 21px 9px 10px 0px !important;
+    position: absolute !important;
+}
+.down{
+padding: 0px !;
+border-radius: 0px !important; 
+color: black !important;
+background: none !important;
+position: relative !important;
+}
+.positionarrow{
+  display: inline;
+  padding: 9px;
+}
+
+.up:hover{
+  color: white !important;
+  background-color: black;
+}
