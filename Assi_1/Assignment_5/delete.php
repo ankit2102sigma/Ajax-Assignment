@@ -10,7 +10,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Error deleting record: " . mysqli_error($conn);
     }
-    
-
-    
 }

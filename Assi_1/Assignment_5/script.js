@@ -2,13 +2,13 @@ $(document).ready(function () {
   $('tbody').empty()
   $('.data_table').hide()
   $('form').submit(function (event) {
-    var rating = parseInt($('#rating').val());
+    var rating = parseInt($('#rating').val())
 
-// check if the rating is valid (between 1 and 10)
-if (isNaN(rating) || rating < 1 || rating > 10) {
-  alert("Please enter a rating between 1 and 10.");
-  return false; // prevent the form from submitting
-}
+    // check if the rating is valid (between 1 and 10)
+    if (isNaN(rating) || rating < 1 || rating > 10) {
+      alert('Please enter a rating between 1 and 10.')
+      return false // prevent the form from submitting
+    }
     $('tbody').empty()
     $('.data_table').show()
 
@@ -35,26 +35,26 @@ if (isNaN(rating) || rating < 1 || rating > 10) {
             '<tr>' +
             '<td>' + id + '</td>' +
             '<td>' + title +  '</td>' +
-            '<td>' + rating +'</td>' +
-             "<td><button  class='deleteBtn' data-id='" + id + "'>Delete</button></td>" +
+            '<td>' +  rating +  '</td>' +
+            "<td><button  class='deleteBtn' data-id='" + id +"'>Delete</button></td>" +
             '</tr>'
-          $('#mytable tbody').append(tr_str)
-          $('#title').val('')
-          $('#rating').val('')
+              $('#mytable tbody').append(tr_str)
+              $('#title').val('')
+              $('#rating').val('')
         }
         $('.deleteBtn').on('click', function () {
           if (confirm('Are you sure you want to delete this item?')) {
-          var id = $(this).data('id')
-          var row = $(this).closest('tr')
-          $.ajax({
-            type: 'POST',
-            url: 'delete.php',
-            data: { id: id },
-            success: function () {
-              row.remove()
-            }
-          })
-        }
+            var id = $(this).data('id')
+            var row = $(this).closest('tr')
+            $.ajax({
+              type: 'POST',
+              url: 'delete.php',
+              data: { id: id },
+              success: function () {
+                row.remove()
+              }
+            })
+          }
         })
       }
     })
