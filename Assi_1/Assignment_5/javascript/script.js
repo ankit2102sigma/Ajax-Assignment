@@ -3,11 +3,22 @@ $(document).ready(function () {
   $('.data_table').hide()
   $('form').submit(function (event) {
     var rating = parseInt($('#rating').val())
+    var title = $('#title').val()
+    var RegExp = /^[a-zA-Z0-9\s]+$/
 
-    // check if the rating is valid (between 1 and 10)
     if (isNaN(rating) || rating < 1 || rating > 10) {
       alert('Please enter a rating between 1 and 10.')
-      return false // prevent the form from submitting
+      return ;
+    }
+
+    if (title.length > 30 ) {
+      alert('Title should be no more than 20 characters')
+      return ;
+    }
+
+    if (!(RegExp.test(title)) ) {
+      alert('Invalid Title')
+      return ;
     }
     $('tbody').empty()
     $('.data_table').show()
@@ -72,10 +83,10 @@ $(document).ready(function () {
   })
 
   $('.uprating').on('click', function () {
-    sortTable(2, true)
+    sortTable(2, false)
   })
   $('.downrating').on('click', function () {
-    sortTable(2, false)
+    sortTable(2, true)
   })
 
   function sortTable (n, asc) {

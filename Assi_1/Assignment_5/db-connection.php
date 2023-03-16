@@ -21,7 +21,7 @@ if ($conn->query($createdb) === TRUE) {
 $conn->select_db($dbname);
 $createtb = "CREATE TABLE IF NOT EXISTS movie (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    Title VARCHAR(15),
+    Title VARCHAR(30),
     Rating INT
 )";
 
