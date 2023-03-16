@@ -1,12 +1,13 @@
 body {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100vh;
 
 }
-.form{
+
+.form {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -16,117 +17,149 @@ body {
 input,
 select,
 textarea {
-    /* width: 100%; */
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical
+  /* width: 100%; */
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical
 }
 
 input[type=submit] {
-    background-color: #04AA6D;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 
 .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    width: 1000px;
-  }
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 1000px;
+}
+
 label {
-    display: inline-block;
-    padding: 8px 12px;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 1000px;
-    margin: 30px auto;
-  }
-
-  th,
-  td {
-    text-align: left;
-    padding: 8px;
-    max-width: 500px;
-    word-break: break-all;
-
-
-  }
-
-  th {
-    background-color: #4CAF50;
-    color: white;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  h1 {
-    text-align: center;
-  }
-
-  a .button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 60px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 8px 80px;
-    cursor: pointer;
-  }
-
-  .btncenter {
-    display: flex;
-    justify-content: center;
-  }
-  tbody {
-    max-width: 40px;
-    word-break: break-all;
-  }
-  .up{
-    padding: 0px  !important;
-    border-radius: 0px !important;
-    color: black !important;
-    background: none !important;
-    margin: 21px 9px 10px 0px !important;
-    position: absolute !important;
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
 }
-.down{
-padding: 0px !;
-border-radius: 0px !important; 
-color: black !important;
-background: none !important;
-position: relative !important;
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 1000px;
+  margin: 30px auto;
 }
-.positionarrow{
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  max-width: 500px;
+  word-break: break-all;
+
+
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+h1 {
+  text-align: center;
+}
+
+a .button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 60px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 8px 80px;
+  cursor: pointer;
+}
+
+.btncenter {
+  display: flex;
+  justify-content: center;
+}
+
+tbody {
+  max-width: 40px;
+  word-break: break-all;
+}
+
+.up {
+
+  color: black !important;
+  background: none !important;
+  margin: 21px 9px 10px 0px !important;
+  position: absolute !important;
+}
+
+.down {
+  color: black !important;
+  background: none !important;
+  /* margin: 21px 9px 10px 0px !important;
+  position: absolute !important; */
+}
+
+.positionarrow {
   display: inline;
-  padding: 9px;
 }
 
-.up:hover{
+.up:hover {
+  color: white !important;
+  background-color: black;
+}
+
+.down:hover {
+  color: white !important;
+  background-color: black;
+}
+
+.uprating {
+
+  color: black !important;
+  background: none !important;
+  margin: 21px 9px 10px 0px !important;
+  position: absolute !important;
+}
+
+.downrating {
+  color: black !important;
+  background: none !important;
+  /* margin: 21px 9px 10px 0px !important;
+position: absolute !important; */
+}
+
+.uprating:hover {
+  color: white !important;
+  background-color: black;
+}
+
+.downrating:hover {
   color: white !important;
   background-color: black;
 }

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
@@ -28,18 +29,26 @@
                 </form>
             </div>
 
-            <div>
+            <div class="data_table">
                 <h1> View Data</h1>
                 <table id="mytable" border="1">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Title 
+                            <th>Title
                                 <div class="positionarrow">
-                                <input class="up" type="submit" name="submit" value="&#9650;">
-                                <input class="down" type="submit" name="submit" value="&#9660;">
-                              </div></th>
-                            <th>Rating</th>
+                                    <input class=" material-icons up" type="submit" name="submit" value="&#xe316;">
+                                    <input class="material-icons down" type="submit" name="submit" value="&#xe313;">
+                                </div>
+                            </th>
+                            <th>Rating
+                                <div class="positionarrow">
+                                    <input class=" material-icons uprating" type="submit" name="submit"
+                                        value="&#xe316;">
+                                    <input class="material-icons downrating" type="submit" name="submit"
+                                        value="&#xe313;">
+                                </div>
+                            </th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -50,8 +59,6 @@
         </div>
     </div>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script> -->
 </body>
 
 </html>
