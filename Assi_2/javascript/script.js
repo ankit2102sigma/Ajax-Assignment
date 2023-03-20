@@ -56,29 +56,30 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#tabledata').submit(function(event) {
 
-        // var title = $('#Post_title').val().trim();
-        // var description = $('#Post_description').val().trim();
-        // if (title === '') {
-        //     alert('Please enter a title');
-        //     return false;
-        // }
-        // if (description === '') {
-        //     alert('Please enter a description');
-        //     return false;
-        // }
-        // if (title.length > 30) {
-        //     alert('Post title must be less than or equal to 30 characters');
-        //     return false;
-        // }
+        var title = $('#Post_title').val().trim();
+        var description = $('#Post_description').val().trim();
+        var userId = $('#userid').val().trim();;
+        if (title === '') {
+            alert("Please enter a title");
+            return ;
+        }
+        if (description === '') {
+            alert('Please enter a description');
+            return ;
+        }
+        if (title.length > 30) {
+            alert("Post title must be less than or equal to 30 characters");
+            return ;
+        }
 
-        // if (description.length > 100) {
-        //     alert('Post description must be less than or equal to 100 characters');
-        //     return false;
-        // }
-        //         if(userId.length > 6){
-        //     alert('User id cannot exceed 6 characters');
-        //     return false;
-        // }
+        if (description.length > 100) {
+            alert('Post description must be less than or equal to 100 characters');
+            return ;
+        }
+        if(userId.length > 6){
+            alert('User id cannot exceed 6 characters');
+            return ;
+        }
 
 
         var formData = {

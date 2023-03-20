@@ -8,10 +8,10 @@ if (!$conn) {
     die('Connection failed: ' . mysqli_connect_error());
 }
 
-$sql = "UPDATE posts SET user_id='$user_id', Title='$title', description='$description' WHERE id='$id'";
+$sql = "UPDATE posts SET id='$id', 
+Title='$title', description='$description' WHERE id='$id'";
 if (mysqli_query($conn, $sql)) {
     echo 'success';
 } else {
     echo 'error';
 }
-
