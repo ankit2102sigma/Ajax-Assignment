@@ -18,16 +18,40 @@
       <form id="tabledata"  method="POST">
 
         <label for="userid">User Id</label>
-        <input type="text" id="userid" name="userid" placeholder="User Id..." required>
+        <input type="number" id="userid" name="userid" placeholder="User Id..." required>
 
         <label for="fname">Post Title</label>
         <input type="text" id="Post_title" name="Post_title" placeholder="Post Title..." required>
 
         <label for="subject">Post Description</label>
-        <textarea id="Post_description" name="Post_description" placeholder="Post Description..." required style="height:200px"></textarea>
+        <textarea id="Post_description" name="Post_description" placeholder="Post Description..." required ></textarea>
 
         <input type="submit" name="submit" value="Submit">
       </form>
+
+      <div class="data_table">
+        <h1>View Data</h1>
+        <table id="mytable" border="1">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>User Id</th>
+              <th>
+                Title
+              </th>
+              <th>
+                Post Description
+                
+              </th>
+              <th>Delete</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    </div>
 
     </body>
 

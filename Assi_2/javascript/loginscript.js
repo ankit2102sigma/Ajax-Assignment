@@ -13,8 +13,11 @@ $(document).ready(function() {
         dataType: 'json',
         encode: true,
         success: function(response) {
-          if (response) {
-            window.location.href = "view.html";
+          if (response[0]['success']) {
+            window.location.href = "form.html";
+          }
+          else{
+            alert(response[0]['message'])
           }
         },
         error: function(xhr, status, error) {

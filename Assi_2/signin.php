@@ -1,23 +1,38 @@
-<?php
-
+<?php 
 include 'db-connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-$firstName = $_POST['fname'];
-$lastName = $_POST['lname'];
-$email = $_POST['email'];
-$password = $_POST['password'];
+    $firstName = $_POST['fname'];
+    $lastName = $_POST['lname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $conn->select_db($dbname);
 
-// Insert the user data into the database
-$sql = "INSERT INTO users (first_name, last_name, email, password) 
-VALUES ('$firstName', '$lastName', '$email', '$password')";
-mysqli_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT COUNT(*) as count FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
 
-$return_arr[] = array(
-    "sucess" => true,
-    "message" => "Hoo raha hei bro",
-);
+    if ($row['count'] > 1) {
+        $return_arr[] = array(
+            "success" => false,
+            "message" => "Email already exists",
+        );
+        echo json_encode($return_arr);
+        return;
+    } else {
 
-echo json_encode($return_arr);
+        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, password) 
+        VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $firstName, $lastName, $email, $password);
+        $stmt->execute();
 
+        $return_arr[] = array(
+            "success" => true,
+            "message" => "User created successfully",
+        );
+
+        echo json_encode($return_arr);
+    }
 }
