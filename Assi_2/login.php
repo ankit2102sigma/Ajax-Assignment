@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
             $return_arr[] = array(
-                "message" => "Wrong Username",
+                "message" => "Wrong Password",
                
             );
             echo json_encode($return_arr);

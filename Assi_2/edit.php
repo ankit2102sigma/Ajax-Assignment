@@ -1,17 +1,45 @@
 <?php
-
 include 'db-connection.php';
 
-$dbname = "User_data";
-$conn = mysqli_connect($host, $user, $password, $dbname);
-if (!$conn) {
-    die('Connection failed: ' . mysqli_connect_error());
-}
+// Check if the request method is POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-$sql = "UPDATE posts SET id='$id', 
-Title='$title', description='$description' WHERE id='$id'";
-if (mysqli_query($conn, $sql)) {
-    echo 'success';
-} else {
-    echo 'error';
+    // Sanitize and validate user input
+    $conn->select_db($dbname);
+    $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
+    $userid = filter_var($_POST['userId'], FILTER_SANITIZE_NUMBER_INT);
+    $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
+    $description = filter_var($_POST['description'], FILTER_SANITIZE_STRING);
+
+    // Prepare the SQL query to update the post data
+    $stmt = $conn->prepare("UPDATE posts SET user_id=?, title=?, description=? WHERE id=?");
+    $stmt->bind_param("isss", $userid, $title, $description, $id);
+    $stmt->execute();
+
+    
+    $sql_select = "SELECT * FROM posts";
+    $result = $conn->query($sql_select);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+
+            $id = $row['id'];
+            $userId = $row['user_id'];
+            $title = $row["title"];
+            $description = $row["description"];
+
+            $return_arr[] = array(
+                "id" => $id,
+                "user_id" => $userId,
+                "Title" => $title,
+                "description" => $description
+            );
+        }
+        echo json_encode($return_arr);
+
+    } else {
+
+        $return_arr[] = array("message"=>"bhai kya kar raha hei tu");
+        // echo json_encode("bhai kya kar raha hei tu");
+    }
 }
