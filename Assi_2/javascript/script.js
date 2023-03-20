@@ -95,39 +95,23 @@ $(document).ready(function () {
       encode: true,
       success: function (response) {
         $('#mytable tbody').empty()
-        var len = response.length
-        for (var i = 0; i < len; i++) {
-          var id = response[i].id
-          var userid = response[i].user_id
-          var title = response[i].Title
-          var description = response[i].description
-          var tr_str =
-            '<tr>' +
-            '<td>' +
-            id +
-            '</td>' +
-            '<td>' +
-            userid +
-            '</td>' +
-            '<td>' +
-            title +
-            '</td>' +
-            '<td>' +
-            description +
-            '</td>' +
-            "<td><button  class='deleteBtn' data-id='" +
-            id +
-            "'>Delete</button></td>" +
-            "<td><button  class='editBtn' data-id='" +
-            id +
-            "'>Edit</button></td>" +
-            '</tr>'
-          $('#mytable tbody').append(tr_str)
-          $('#userid').val('')
-          $('#Post_title').val('')
-          $('#Post_description').val('')
-          
-        }
+        view(response);
+
+        // $(document).ready(function () {
+          $(document).on('click', '.deleteBtn', function () {
+            deleteItem(this);
+          })
+        // })
+
+        // $(document).ready(function () {
+          // $(document).on('click', '.editBtn', function () {
+          //   $('#submit').hide()
+          //   $('#update').show()
+          //   editItem(this);
+          // })
+
+
+        // })
       },
 
       error: function (xhr, status, error) {
@@ -138,21 +122,15 @@ $(document).ready(function () {
     event.preventDefault()
   })
 })
-$(document).ready(function () {
-  $(document).on('click', '.deleteBtn', function () {
-    deleteItem(this);
-  })
+
+$(document).on('click', '.editBtn', function (event) {
+  $('#submit').hide()
+  $('#update').show()
+  editItem(this);
+  event.preventDefault()
 })
 
-$(document).ready(function () {
-  $(document).on('click', '.editBtn', function () {
-    $('#submit').hide()
-    $('#update').show()
-    editItem(this);
-  })
-})
-
-function deleteItem (element) {
+function deleteItem(element) {
   if (confirm('Are you sure you want to delete this item?')) {
     var id = $(element).data('id')
     var row = $(element).closest('tr')
@@ -167,7 +145,7 @@ function deleteItem (element) {
   }
 }
 
-function editItem (element) {
+function editItem(element) {
 
   var id = $(element).data('id')
   var row = $(element).closest('tr')
@@ -178,68 +156,76 @@ function editItem (element) {
   $('#userid').val(userid)
   $('#Post_title').val(title)
   $('#Post_description').val(description)
-  var updatedformData = {
-    id: id,
-    userId: $('#userid').val(),
-    title: $('#Post_title').val(),
-    description: $('#Post_description').val()
-  }
 
-  $('#update').on('click', function () {
+
+  $('#update').click(function (event) {
     $('#mytable tbody').empty()
-    // var updatedformData = {
-    //   id: id,
-    //   userId: $('#userid').val(),
-    //   title: $('#Post_title').val(),
-    //   description: $('#Post_description').val()
-    // }
+    var updatedformData = {
+      id: id,
+      userId: $('#userid').val(),
+      title: $('#Post_title').val(),
+      description: $('#Post_description').val()
+    }
 
     $.ajax({
-        type: 'POST',
-        url: 'edit.php',
-        data: updatedformData,
-        dataType: 'json',
-        encode: true,
+      type: 'POST',
+      url: 'edit.php',
+      data: updatedformData,
+      dataType: 'json',
+      encode: true,
       success: function (response) {
-        var len = response.length
-        $('#mytable tbody').empty()
-        for (var i = 0; i < len; i++) {
-          var id = response[i].id
-          var userid = response[i].user_id
-          var title = response[i].title
-          var description = response[i].description
-          var tr_str =
-            '<tr>' +
-            '<td>' +
-            id +
-            '</td>' +
-            '<td>' +
-            userid +
-            '</td>' +
-            '<td>' +
-            title +
-            '</td>' +
-            '<td>' +
-            description +
-            '</td>' +
-            "<td><button  class='deleteBtn' data-id='" +
-            id +
-            "'>Delete</button></td>" +
-            "<td><button  class='editBtn' data-id='" +
-            id +
-            "'>Edit</button></td>" +
-            '</tr>'
-          $('#mytable tbody').append(tr_str)
-          $('#userid').val('')
-          $('#Post_title').val('')
-          $('#Post_description').val('')
-        }
         $('#update').hide()
         $('#submit').show()
+        
+        view(response);
       },
+      
+
+
       error: function (xhr, status, error) {
         console.log(xhr, status, error)
       }
     })
+    event.preventDefault()
   })
 }
+// }
+function view(element) {
+  // $('#mytable tbody').empty()
+
+  var len = element.length
+  for (var i = 0; i < len; i++) {
+    var id = element[i].id
+    var userid = element[i].user_id
+    var title = element[i].Title
+    var description = element[i].description
+    var tr_str =
+      '<tr>' +
+      '<td>' +
+      id +
+      '</td>' +
+      '<td>' +
+      userid +
+      '</td>' +
+      '<td>' +
+      title +
+      '</td>' +
+      '<td>' + description +
+      '</td>' +
+      "<td><button  class='deleteBtn' data-id='" +
+      id +
+      "'>Delete</button></td>" +
+      "<td><button  class='editBtn' data-id='" +
+      id +
+      "'>Edit</button></td>" +
+      '</tr>'
+    $('#mytable tbody').append(tr_str)
+    $('#userid').val('')
+    $('#Post_title').val('')
+    $('#Post_description').val('')
+
+  }
+}
+
+
+
