@@ -97,21 +97,16 @@ $(document).ready(function () {
         $('#mytable tbody').empty()
         view(response);
 
-        // $(document).ready(function () {
           $(document).on('click', '.deleteBtn', function () {
             deleteItem(this);
           })
-        // })
+          $(document).on('click', '.editBtn', function (event) {
+            $('#submit').hide()
+            $('#update').show()
+            editItem(this);
+            event.preventDefault()
+          })
 
-        // $(document).ready(function () {
-          // $(document).on('click', '.editBtn', function () {
-          //   $('#submit').hide()
-          //   $('#update').show()
-          //   editItem(this);
-          // })
-
-
-        // })
       },
 
       error: function (xhr, status, error) {
@@ -123,12 +118,7 @@ $(document).ready(function () {
   })
 })
 
-$(document).on('click', '.editBtn', function (event) {
-  $('#submit').hide()
-  $('#update').show()
-  editItem(this);
-  event.preventDefault()
-})
+
 
 function deleteItem(element) {
   if (confirm('Are you sure you want to delete this item?')) {
@@ -191,8 +181,8 @@ function editItem(element) {
 }
 // }
 function view(element) {
-  // $('#mytable tbody').empty()
-
+  
+  $('#mytable tbody').empty()
   var len = element.length
   for (var i = 0; i < len; i++) {
     var id = element[i].id
