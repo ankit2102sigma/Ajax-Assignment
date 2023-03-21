@@ -14,16 +14,16 @@ $(document).ready(function () {
     // Validate input fields
     if (!nameRegex.test(formData.fname)) {
       alert('Please enter a valid first name.')
-      return false
+      return 
     }
     if (!nameRegex.test(formData.lname)) {
       alert('Please enter a valid last name.')
-      return false
+      return 
     }
     if (!passwordRegex.test(formData.password)) {
       alert('Password must be between 8 and 20 characters and include at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*()_+-=[]{};:\'"\\|,.<>/?).');
       
-      return false
+      return 
     }
 
     // Send data to server
@@ -56,6 +56,7 @@ $(document).ready(function () {
     var title = $('#Post_title').val().trim()
     var description = $('#Post_description').val().trim()
     var userId = $('#userid').val().trim()
+    var numRegex = /^[1-9]\d{0,5}$/
     if (title === '') {
       alert('Please enter a title')
       return
@@ -76,6 +77,10 @@ $(document).ready(function () {
     if (userId.length > 6) {
       alert('User id cannot exceed 6 characters')
       return
+    }
+    if (!numRegex.test(formData.userId)) {
+      alert('Please enter a valid User Id.')
+      return 
     }
 
     var formData = {
@@ -166,13 +171,12 @@ function editItem(element) {
 
     if (updatedformData.userId === '') {
       alert('Please enter a UserId')
-      return
+      return;
     }
     if (updatedformData.description === '') {
       alert('Please enter a description')
       return
     }
-    
 
     if (updatedformData.title === '') {
       alert('Please enter a title')
@@ -184,7 +188,7 @@ function editItem(element) {
     }
     if (!numRegex.test(updatedformData.userId)) {
       alert('Please enter a valid User Id.')
-      return false
+      return 
     }
     
 
