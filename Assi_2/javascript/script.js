@@ -4,9 +4,6 @@ $(document).ready(function () {
     var nameRegex = /^[A-Za-z]+$/
     var passwordRegex = /^(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{8,20}$/
 
-
-
-
     var formData = {
       fname: $('#fname').val(),
       lname: $('#lname').val(),
@@ -28,8 +25,6 @@ $(document).ready(function () {
       
       return false
     }
-
-
 
     // Send data to server
     $.ajax({
@@ -177,9 +172,6 @@ function editItem(element) {
 
         view(response);
       },
-
-
-
       error: function (xhr, status, error) {
         console.log(xhr, status, error)
       }
@@ -187,6 +179,8 @@ function editItem(element) {
     event.preventDefault()
   })
 }
+
+
 
 function view(element) {
 
@@ -199,23 +193,14 @@ function view(element) {
     var description = element[i].description
     var tr_str =
       '<tr>' +
-      '<td>' +
-      id +
-      '</td>' +
-      '<td>' +
-      userid +
-      '</td>' +
-      '<td>' +
-      title +
-      '</td>' +
-      '<td>' + description +
-      '</td>' +
+      '<td>' +  id + '</td>' +
+      '<td>' + userid + '</td>' +
+      '<td>' +  title + '</td>' +
+      '<td>' + description + '</td>' +
       "<td><button  class='deleteBtn' data-id='" +
-      id +
-      "'>Delete</button></td>" +
+      id +"'>Delete</button></td>" +
       "<td><button  class='editBtn' data-id='" +
-      id +
-      "'>Edit</button></td>" +
+      id + "'>Edit</button></td>" +
       '</tr>'
     $('#mytable tbody').append(tr_str)
     $('#userid').val('')
