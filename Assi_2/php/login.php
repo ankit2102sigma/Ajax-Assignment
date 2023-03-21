@@ -9,7 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->select_db($dbname);
 
     $query = "SELECT `email`,`password` FROM users";
-    $result = $conn->query($query);
+    $stmt = $conn->prepare($query);
+
+    if (!$stmt) {
+        echo 'Error: ' . mysqli_error($conn);
+        exit;
+    }
+
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result === false) {
         echo 'Error: ' . mysqli_error($conn);

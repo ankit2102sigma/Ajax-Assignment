@@ -95,9 +95,9 @@ $(document).ready(function () {
         $('#mytable tbody').empty()
         view(response);
 
-        $(document).on('click', '.deleteBtn', function () {
-          deleteItem(this);
-        })
+        // $(document).on('click', '.deleteBtn', function () {
+        //   deleteItem(this);
+        // })
         $(document).on('click', '.editBtn', function (event) {
           $('#submit').hide()
           $('#update').show()
@@ -118,6 +118,9 @@ $(document).ready(function () {
   })
 })
 
+$(document).on('click', '.deleteBtn', function () {
+    deleteItem(this);
+  })
 
 
 function deleteItem(element) {
@@ -151,6 +154,7 @@ function editItem(element) {
   $('#update').click(function (event) {
     $('.data_table').show()
     $('#mytable tbody').empty()
+    
 
     var updatedformData = {
       id: id,
