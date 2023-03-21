@@ -26,19 +26,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode($return_arr);
             die();
         } else {
-            $return_arr[] = array(  
-                "message" => "Wrong Password",   
-            );
-             echo json_encode($return_arr);
-            return;
-        }
-    } else {
             $return_arr[] = array(
                 "message" => "Wrong Password",
-               
             );
             echo json_encode($return_arr);
             return;
+        }
+    } else {
+        $return_arr[] = array(
+            "message" => "Wrong Username",
+
+        );
+        echo json_encode($return_arr);
+        return;
     }
 }
 

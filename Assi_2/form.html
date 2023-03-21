@@ -1,59 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/form.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="javascript/script.js"></script>
+    <title>Insert Data</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/form.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="javascript/script.js"></script>
-  <title>Insert Data</title>
-</head>
+  <body>
+    <div class="main">
+      <h1 style="text-align: center">Enter Table Data</h1>
+      <div class="container">
+        <form id="tabledata" method="POST">
+          <label for="userid">User Id</label>
+          <input
+            type="number"
+            id="userid"
+            name="userid"
+            placeholder="User Id..."
+            required
+          />
 
-<body>
-  <div class="main">
-    <h1 style="text-align: center;">Enter Table Data</h1>
-    <div class="container">
-      <form id="tabledata"  method="POST">
+          <label for="fname">Post Title</label>
+          <input
+            type="text"
+            id="Post_title"
+            name="Post_title"
+            placeholder="Post Title..."
+            required
+          />
 
-        <label for="userid">User Id</label>
-        <input type="number" id="userid" name="userid" placeholder="User Id..." required>
+          <label for="subject">Post Description</label>
+          <textarea
+            id="Post_description"
+            name="Post_description"
+            placeholder="Post Description..."
+            required
+          ></textarea>
 
-        <label for="fname">Post Title</label>
-        <input type="text" id="Post_title" name="Post_title" placeholder="Post Title..." required>
+          <input type="submit" id="submit" name="submit" value="Submit" />
+          <input type="submit" id="update" name="update" value="Update" />
+          <!-- <input type="view" id="view" name="view" value="View Data" /> -->
+        </form>
 
-        <label for="subject">Post Description</label>
-        <textarea id="Post_description" name="Post_description" placeholder="Post Description..." required ></textarea>
-
-        <input type="submit" id="submit" name="submit" value="Submit">
-        <input type="submit" id="update" name="update" value="Update">
-      </form>
-
-      <div class="data_table">
-        <h1>View Data</h1>
-        <table id="mytable" border="1">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>User Id</th>
-              <th>
-                Title
-              </th>
-              <th>
-                Post Description
-                
-              </th>
-              <th>Delete</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <div class="data_table">
+          <h1>View Data</h1>
+          <table id="mytable" border="1">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>User Id</th>
+                <th>Title</th>
+                <th>Post Description</th>
+                <th>Delete</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
-    </div>
-
-    </body>
-
-    </html>
+  </body>
+</html>

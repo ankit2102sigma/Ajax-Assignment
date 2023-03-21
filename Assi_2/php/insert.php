@@ -5,28 +5,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_POST['userId'];
     $Title = $_POST['title'];
     $description = $_POST['description'];
-    
+
     $sql = "CREATE TABLE IF NOT EXISTS posts (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         user_id VARCHAR(10) NOT NULL,
         title VARCHAR(100) NOT NULL,
         description TEXT NOT NULL
     )";
-    
+
     if ($conn->query($sql) === TRUE) {
         // echo "Table posts created successfully";
     } else {
         echo "Error creating table: " . $conn->error;
     }
-    
-    
+
+
 
     $sql = "INSERT INTO posts (user_id, title, description) 
     VALUES ('$userId', '$Title', '$description')";
 
 
     if ($conn->query($sql) === TRUE) {
-        
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -55,5 +54,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "0 results";
     }
 }
-
-

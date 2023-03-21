@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include 'db-connection.php';
 
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
 
-    if ($row['count'] > 1) {
+    if ($row['count'] > 0) {
         $return_arr[] = array(
             "success" => false,
             "message" => "Email already exists",
@@ -37,7 +37,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode($return_arr);
     }
 }
-
-
-
-

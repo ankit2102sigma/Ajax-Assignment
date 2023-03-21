@@ -25,7 +25,7 @@ $createtb = "CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 )";
-  
+
 if ($conn->query($createtb) === TRUE) {
 } else {
   echo "Error creating table: " . $conn->error;
