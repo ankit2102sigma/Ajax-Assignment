@@ -1,9 +1,12 @@
 $(document).ready(function () {
+  $('.data_table').hide()
   $('#form').submit(function (event) {
     var nameRegex = /^[A-Za-z]+$/
-    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+    var passwordRegex = /^(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Za-z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{8,20}$/
 
-    // Get form data
+
+
+
     var formData = {
       fname: $('#fname').val(),
       lname: $('#lname').val(),
@@ -21,16 +24,17 @@ $(document).ready(function () {
       return false
     }
     if (!passwordRegex.test(formData.password)) {
-      alert(
-        'Please enter a valid password. Password must contain at least 8 characters, including at least one number, one lowercase letter, and one uppercase letter.'
-      )
+      alert('Password must be between 8 and 20 characters and include at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*()_+-=[]{};:\'"\\|,.<>/?).');
+      
       return false
     }
+
+
 
     // Send data to server
     $.ajax({
       type: 'POST',
-      url: 'signin.php',
+      url: 'php/signin.php',
       data: formData,
       dataType: 'json',
       encode: true,
@@ -47,8 +51,6 @@ $(document).ready(function () {
         console.log('Error:', error)
       }
     })
-
-    // Prevent form submission
     event.preventDefault()
   })
 })
@@ -56,6 +58,7 @@ $(document).ready(function () {
 $(document).ready(function () {
   $('#update').hide()
   $('#submit').click(function (event) {
+    $('.data_table').show();
     var title = $('#Post_title').val().trim()
     var description = $('#Post_description').val().trim()
     var userId = $('#userid').val().trim()
@@ -89,7 +92,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: 'POST',
-      url: 'insert.php',
+      url: 'php/insert.php',
       data: formData,
       dataType: 'json',
       encode: true,
@@ -97,15 +100,17 @@ $(document).ready(function () {
         $('#mytable tbody').empty()
         view(response);
 
-          $(document).on('click', '.deleteBtn', function () {
-            deleteItem(this);
-          })
-          $(document).on('click', '.editBtn', function (event) {
-            $('#submit').hide()
-            $('#update').show()
-            editItem(this);
-            event.preventDefault()
-          })
+        $(document).on('click', '.deleteBtn', function () {
+          deleteItem(this);
+        })
+        $(document).on('click', '.editBtn', function (event) {
+          $('#submit').hide()
+          $('#update').show()
+          $('.data_table').hide()
+          $(window).scrollTop(0);
+          editItem(this);
+          event.preventDefault()
+        })
 
       },
 
@@ -126,7 +131,7 @@ function deleteItem(element) {
     var row = $(element).closest('tr')
     $.ajax({
       type: 'POST',
-      url: 'delete.php',
+      url: 'php/delete.php',
       data: { id: id },
       success: function () {
         row.remove()
@@ -149,27 +154,30 @@ function editItem(element) {
 
 
   $('#update').click(function (event) {
+    $('.data_table').show()
     $('#mytable tbody').empty()
+
     var updatedformData = {
       id: id,
       userId: $('#userid').val(),
       title: $('#Post_title').val(),
       description: $('#Post_description').val()
     }
+    
 
     $.ajax({
       type: 'POST',
-      url: 'edit.php',
+      url: 'php/edit.php',
       data: updatedformData,
       dataType: 'json',
       encode: true,
       success: function (response) {
         $('#update').hide()
         $('#submit').show()
-        
+
         view(response);
       },
-      
+
 
 
       error: function (xhr, status, error) {
@@ -179,9 +187,9 @@ function editItem(element) {
     event.preventDefault()
   })
 }
-// }
+
 function view(element) {
-  
+
   $('#mytable tbody').empty()
   var len = element.length
   for (var i = 0; i < len; i++) {
