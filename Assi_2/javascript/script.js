@@ -53,7 +53,6 @@ $(document).ready(function () {
 $(document).ready(function () {
   $('#update').hide()
   $('#submit').click(function (event) {
-    $('.data_table').show();
     var title = $('#Post_title').val().trim()
     var description = $('#Post_description').val().trim()
     var userId = $('#userid').val().trim()
@@ -92,6 +91,7 @@ $(document).ready(function () {
       dataType: 'json',
       encode: true,
       success: function (response) {
+        $('.data_table').show();
         $('#mytable tbody').empty()
         view(response);
 
@@ -152,7 +152,6 @@ function editItem(element) {
 
 
   $('#update').click(function (event) {
-    $('.data_table').show()
     $('#mytable tbody').empty()
     
 
@@ -161,6 +160,31 @@ function editItem(element) {
       userId: $('#userid').val(),
       title: $('#Post_title').val(),
       description: $('#Post_description').val()
+    }
+
+    var numRegex = /^[1-9]\d{0,5}$/
+
+    if (updatedformData.userId === '') {
+      alert('Please enter a UserId')
+      return
+    }
+    if (updatedformData.description === '') {
+      alert('Please enter a description')
+      return
+    }
+    
+
+    if (updatedformData.title === '') {
+      alert('Please enter a title')
+      return
+    }
+    if (updatedformData.description === '') {
+      alert('Please enter a description')
+      return
+    }
+    if (!numRegex.test(updatedformData.userId)) {
+      alert('Please enter a valid User Id.')
+      return false
     }
     
 
@@ -173,6 +197,7 @@ function editItem(element) {
       success: function (response) {
         $('#update').hide()
         $('#submit').show()
+        $('.data_table').show()
 
         view(response);
       },
