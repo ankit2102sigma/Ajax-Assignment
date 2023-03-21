@@ -56,7 +56,6 @@ $(document).ready(function () {
     var title = $('#Post_title').val().trim()
     var description = $('#Post_description').val().trim()
     var userId = $('#userid').val().trim()
-    var numRegex = /^[1-9]\d{0,5}$/
     if (title === '') {
       alert('Please enter a title')
       return
@@ -77,10 +76,6 @@ $(document).ready(function () {
     if (userId.length > 6) {
       alert('User id cannot exceed 6 characters')
       return
-    }
-    if (!numRegex.test(formData.userId)) {
-      alert('Please enter a valid User Id.')
-      return 
     }
 
     var formData = {
@@ -175,20 +170,20 @@ function editItem(element) {
     }
     if (updatedformData.description === '') {
       alert('Please enter a description')
-      return
+      return;
     }
 
     if (updatedformData.title === '') {
       alert('Please enter a title')
-      return
+      return;
     }
     if (updatedformData.description === '') {
       alert('Please enter a description')
-      return
+      return;
     }
     if (!numRegex.test(updatedformData.userId)) {
       alert('Please enter a valid User Id.')
-      return 
+      return ;
     }
     
 
