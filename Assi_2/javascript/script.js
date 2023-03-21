@@ -180,8 +180,6 @@ function editItem(element) {
   })
 }
 
-
-
 function view(element) {
 
   $('#mytable tbody').empty()
