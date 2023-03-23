@@ -26,5 +26,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
+    $stmt_select = $conn->prepare("SELECT * FROM movie");
+    if ($stmt_select->execute()) {
+        $result = $stmt_select->get_result();
 
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+
+                $id = $row['id'];
+                $Title = $row['Title'];
+                $rating = $row["Rating"];;
+
+                $return_arr[] = array(
+                    "id" => $id,
+                    "Title" => $Title,
+                    "rating" => $rating
+                );
+            }
+            echo json_encode($return_arr);
+        } else {
+            echo "0 results";
+        }
+
+
+}
 }
